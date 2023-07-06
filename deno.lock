@@ -1,0 +1,67 @@
+{
+  "version": "2",
+  "remote": {
+    "https://deno.land/std@0.193.0/_util/asserts.ts": "178dfc49a464aee693a7e285567b3d0b555dc805ff490505a8aae34f9cfb1462",
+    "https://deno.land/std@0.193.0/_util/os.ts": "d932f56d41e4f6a6093d56044e29ce637f8dcc43c5a90af43504a889cf1775e3",
+    "https://deno.land/std@0.193.0/flags/mod.ts": "17f444ddbee43c5487568de0c6a076c7729cfe90d96d2ffcd2b8f8adadafb6e8",
+    "https://deno.land/std@0.193.0/path/_constants.ts": "e49961f6f4f48039c0dfed3c3f93e963ca3d92791c9d478ac5b43183413136e0",
+    "https://deno.land/std@0.193.0/path/_interface.ts": "6471159dfbbc357e03882c2266d21ef9afdb1e4aa771b0545e90db58a0ba314b",
+    "https://deno.land/std@0.193.0/path/_util.ts": "d7abb1e0dea065f427b89156e28cdeb32b045870acdf865833ba808a73b576d0",
+    "https://deno.land/std@0.193.0/path/common.ts": "ee7505ab01fd22de3963b64e46cff31f40de34f9f8de1fff6a1bd2fe79380000",
+    "https://deno.land/std@0.193.0/path/glob.ts": "d479e0a695621c94d3fd7fe7abd4f9499caf32a8de13f25073451c6ef420a4e1",
+    "https://deno.land/std@0.193.0/path/mod.ts": "f065032a7189404fdac3ad1a1551a9ac84751d2f25c431e101787846c86c79ef",
+    "https://deno.land/std@0.193.0/path/posix.ts": "8b7c67ac338714b30c816079303d0285dd24af6b284f7ad63da5b27372a2c94d",
+    "https://deno.land/std@0.193.0/path/separator.ts": "0fb679739d0d1d7bf45b68dacfb4ec7563597a902edbaf3c59b50d5bcadd93b1",
+    "https://deno.land/std@0.193.0/path/win32.ts": "d186344e5583bcbf8b18af416d13d82b35a317116e6460a5a3953508c3de5bba",
+    "https://deno.land/x/discord_rpc@0.3.2/deps.ts": "3ae1770c0e75cc18ce4943f8c4f30595b51d7949c8f9297c34536fcfbd1ad584",
+    "https://deno.land/x/discord_rpc@0.3.2/mod.ts": "60900c6d14f21eaebb56babb26f7bdd663ee2be2fce9b108f8531748b9776e17",
+    "https://deno.land/x/discord_rpc@0.3.2/src/client.ts": "8327f1ad0a0f5941001a86a17dcfd37132b48f0e82290b215fd6d102d7f8acfe",
+    "https://deno.land/x/discord_rpc@0.3.2/src/conn.ts": "9fd25db06e2d70951beb4700b333347b649fd35feb3295ceea00e19fe0348d91",
+    "https://deno.land/x/discord_rpc@0.3.2/src/types.ts": "0ea6155131c566f2df6dadf0d8db20364b50d22c7bd3a46e2a80157ccebcdb25",
+    "https://deno.land/x/discord_rpc@0.3.2/src/util.ts": "27cf529418bb0c66d830d31895938367e344785e277f1da18ce09bd11dec5c39",
+    "https://deno.land/x/namedpipe@0.1.2/client.ts": "21d3fdd0815f969bff33363e9743dc0f32d750cce32d47d73f4d0b16b4c51201",
+    "https://deno.land/x/namedpipe@0.1.2/deps.ts": "887765175a2b941907e5a61edb62e1f4fb91cae13c42b6134f4863e9d9c73ba8",
+    "https://deno.land/x/namedpipe@0.1.2/mod.ts": "865f345ff24605453bc6d89d780c0785eb8c75345a01eef6bf66b4fb578e67b9",
+    "https://raw.githubusercontent.com/DjDeveloperr/deno_win32/0.4.1/util.ts": "0f846e01a976601ad4c9839b72df8aaddc65685a16bc658a1bb914e21323e231",
+    "https://win32.deno.dev/0.4.1/Foundation": "4269309575d542c58cc9889a78e7f02d98a0af78f74bcaaf0c7bff52dddb7146",
+    "https://win32.deno.dev/0.4.1/Storage.FileSystem": "6acf3f10fa7b153cf0dc3bdb184a305c67dab28bcca25ec8726b65623f234fa3",
+    "https://win32.deno.dev/0.4.1/System.Diagnostics.Debug": "941ea74c410cf57b05eb9fa6c1ccccf57aee633ffb8a18e41a5496ecbd8b5de8",
+    "https://win32.deno.dev/0.4.1/System.IO": "9c26d0b15a5e1ec5f1765af18b5983ebd920890c52ede231a625384b6ef7a2c4",
+    "https://win32.deno.dev/0.4.1/System.Pipes": "7a1b9870018298d069908e51635f8aa63d1c2cfcdab55e440b50cee04cef87a0",
+    "https://win32.deno.dev/0.4.1/error": "548aa1b5f09f1f39193ce930583180f5e9d7062b2b06a7eea735a4b9f4c45e40",
+    "https://win32.deno.dev/0.4.1/overlapped": "917c33c6d55ee8fb842c764fdd754cc547601a5abe68ad6431043da0768d2478"
+  },
+  "npm": {
+    "specifiers": {
+      "poe-log-events@4.0.0": "poe-log-events@4.0.0"
+    },
+    "packages": {
+      "debug@4.3.4": {
+        "integrity": "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==",
+        "dependencies": {
+          "ms": "ms@2.1.2"
+        }
+      },
+      "ms@2.1.2": {
+        "integrity": "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==",
+        "dependencies": {}
+      },
+      "poe-log-events@4.0.0": {
+        "integrity": "sha512-MxdBFWy23SEoAdSmmSWU5o+k7v2NyPlCVLw5KpVDjFcMw7FagTRj337KlQVQOyp30e0NNZit06dhtAxaJoeoRg==",
+        "dependencies": {
+          "debug": "debug@4.3.4",
+          "tail": "tail@2.2.6",
+          "tiny-typed-emitter": "tiny-typed-emitter@2.1.0"
+        }
+      },
+      "tail@2.2.6": {
+        "integrity": "sha512-IQ6G4wK/t8VBauYiGPLx+d3fA5XjSVagjWV5SIYzvEvglbQjwEcukeYI68JOPpdydjxhZ9sIgzRlSmwSpphHyw==",
+        "dependencies": {}
+      },
+      "tiny-typed-emitter@2.1.0": {
+        "integrity": "sha512-qVtvMxeXbVej0cQWKqVSSAHmKZEHAvxdF8HEUBFWts8h+xEo5m/lEiPakuyZ3BnCBjOD8i24kzNOiOLLgsSxhA==",
+        "dependencies": {}
+      }
+    }
+  }
+}

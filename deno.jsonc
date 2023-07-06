@@ -1,0 +1,16 @@
+{
+    "tasks": {
+        "run": "deno run --unstable --allow-read --allow-write --allow-env --allow-sys=uid --allow-ffi main.ts",
+        "build": "deno compile --unstable --lock --allow-read --allow-write --allow-env --allow-sys=uid --allow-ffi main.ts"
+    },
+    "imports": {
+        "flags": "https://deno.land/std@0.193.0/flags/mod.ts",
+        "path": "https://deno.land/std@0.193.0/path/mod.ts",
+        "discord_rpc": "https://deno.land/x/discord_rpc@0.3.2/mod.ts",
+        "poe-log-events": "npm:poe-log-events@4.0.0"
+    },
+    "fmt": {
+        "indentWidth": 4,
+        "singleQuote": true
+    }
+}
