@@ -1,5 +1,6 @@
 import { join } from 'path';
 import { type Activity, Client } from 'discord_rpc';
+import { Input, Secret } from 'prompt';
 import { PathOfExileLog } from 'poe-log-events';
 
 type Character = {
@@ -13,14 +14,6 @@ type Character = {
     pinnable: boolean;
     lastActive?: boolean;
 };
-
-function input(message: string) {
-    let input: string | null;
-    do {
-        input = prompt(message);
-    } while (input == null);
-    return input;
-}
 
 const steamDir = () => {
     switch (Deno.build.os) {
@@ -37,8 +30,17 @@ const steamDir = () => {
 
 const logFile = Deno.args.at(0) ||
     join(steamDir(), 'steamapps', 'common', 'Path of Exile', 'logs', 'Client.txt');
+try {
+    const stat = await Deno.stat(logFile);
+    if (!stat.isFile) {
+        throw Error(`Error: '${logFile}' is not a file`);
+    }
+} catch (error) {
+    console.error(error.message);
+    Deno.exit(1);
+}
 
-const userAgent = 'poe-discord-rpc/0.2.0 (contact: github.com/ObserverOfTime)';
+const userAgent = 'poe-discord-rpc/0.2.1 (contact: github.com/ObserverOfTime)';
 const apiUrl = 'https://www.pathofexile.com/character-window/get-characters';
 
 let connected = false;
@@ -60,7 +62,12 @@ const log = new PathOfExileLog({
     ignoreDebug: true,
 });
 
-const poesessid = input('Input your POESESSID:');
+const hashRegex = /^[0-9A-Fa-f]{32}$/;
+const poesessid = await Secret.prompt({
+    message: 'Input your POESESSID',
+    validate: (value) => hashRegex.test(value),
+    prefix: '',
+});
 
 console.log('Waiting...');
 
@@ -68,9 +75,6 @@ log.addListener('login', async (_) => {
     if (!connected) {
         try {
             await client.connect();
-            console.log('Connected.');
-            connected = true;
-            const name = input('Input your character name:');
             const res = await fetch(apiUrl, {
                 headers: {
                     'User-Agent': userAgent,
@@ -79,6 +83,14 @@ log.addListener('login', async (_) => {
             });
             if (res.ok) {
                 const data: Character[] = await res.json();
+                const names = data.map((c) => c.name);
+                const name = await Input.prompt({
+                    message: 'Choose your character',
+                    validate: (value) => names.includes(value),
+                    suggestions: names,
+                    list: true,
+                    prefix: '',
+                });
                 character = data.find((c) => c.name == name);
                 if (character) {
                     activity.assets!.large_text = `Character: ${character.name}`;
@@ -89,6 +101,8 @@ log.addListener('login', async (_) => {
                 console.error(res.statusText);
             }
             client.setActivity(activity);
+            console.log('Connected.');
+            connected = true;
         } catch (err) {
             console.error(err);
         }

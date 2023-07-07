@@ -4,14 +4,15 @@
         "build": "deno compile --unstable --lock --allow-read --allow-write --allow-env --allow-ffi --allow-sys=uid --allow-net=www.pathofexile.com main.ts"
     },
     "imports": {
-        "flags": "https://deno.land/std@0.193.0/flags/mod.ts",
         "path": "https://deno.land/std@0.193.0/path/mod.ts",
         "discord_rpc": "https://deno.land/x/discord_rpc@0.3.2/mod.ts",
+        "prompt": "https://deno.land/x/cliffy@v1.0.0-rc.2/prompt/mod.ts",
         "poe-log-events": "npm:poe-log-events@4.0.0"
     },
     "fmt": {
         "indentWidth": 4,
         "singleQuote": true,
-        "lineWidth": 100
+        "lineWidth": 100,
+        "proseWrap": "never"
     }
 }

@@ -16,7 +16,7 @@ Path of Exile Discord RPC written in Deno.
   - e.g. `poe-discord-rpc-win.exe "C:\Program Files (x86)\Grinding Gear Games\Path of Exile\logs\Client.txt"`
 - Input your `POESESSID` _([be careful](https://twitter.com/pathofexile/status/1602851059361550337))_.
 - Start Path of Exile & login.
-- Input your character name.
+- Choose your character.
 - ???
 - Profit.
 
