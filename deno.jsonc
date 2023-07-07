@@ -1,7 +1,7 @@
 {
     "tasks": {
-        "run": "deno run --unstable --allow-read --allow-write --allow-env --allow-sys=uid --allow-ffi main.ts",
-        "build": "deno compile --unstable --lock --allow-read --allow-write --allow-env --allow-sys=uid --allow-ffi main.ts"
+        "run": "deno run --unstable --allow-read --allow-write --allow-env --allow-ffi --allow-sys=uid --allow-net=www.pathofexile.com main.ts",
+        "build": "deno compile --unstable --lock --allow-read --allow-write --allow-env --allow-ffi --allow-sys=uid --allow-net=www.pathofexile.com main.ts"
     },
     "imports": {
         "flags": "https://deno.land/std@0.193.0/flags/mod.ts",
@@ -11,6 +11,7 @@
     },
     "fmt": {
         "indentWidth": 4,
-        "singleQuote": true
+        "singleQuote": true,
+        "lineWidth": 100
     }
 }
