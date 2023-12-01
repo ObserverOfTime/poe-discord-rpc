@@ -1,6 +1,6 @@
 name: Release
 
-on: 
+on:
   push:
     tags: ['*']
 
@@ -11,7 +11,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Deno
         uses: denoland/setup-deno@v1
       - name: Set up cache
@@ -22,10 +22,10 @@ jobs:
           restore-keys: deno-
       - name: Build artifacts
         run: |-
-          deno task build --target=x86_64-unknown-linux-gnu -o poe-discord-rpc-linux
-          deno task build --target=x86_64-pc-windows-msvc -o poe-discord-rpc-win.exe
-          deno task build --target=x86_64-apple-darwin -o poe-discord-rpc-mac
-          deno task build --target=aarch64-apple-darwin -o poe-discord-rpc-mac-m1
+          TARGET=x86_64-unknown-linux-gnu SUFFIX=linux deno task build
+          TARGET=x86_64-pc-windows-msvc SUFFIX=win.exe deno task build
+          TARGET=x86_64-apple-darwin SUFFIX=mac deno task build
+          TARGET=aarch64-apple-darwin SUFFIX=mac-m1 deno task build
       - name: Create release
         uses: ncipollo/release-action@v1
         with:

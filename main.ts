@@ -1,5 +1,6 @@
 import { join } from 'path';
-import { type Activity, Client } from 'discord_rpc';
+// TODO: roll my own Discord RPC
+import { type SetActivity, Client } from 'discord_rpc';
 import { Input, Secret } from 'prompt';
 import { PathOfExileLog } from 'poe-log-events';
 
@@ -40,21 +41,17 @@ try {
     Deno.exit(1);
 }
 
-const userAgent = 'poe-discord-rpc/0.2.1 (contact: github.com/ObserverOfTime)';
+const userAgent = 'poe-discord-rpc/0.3.0 (contact: github.com/ObserverOfTime)';
 const apiUrl = 'https://www.pathofexile.com/character-window/get-characters';
 
 let connected = false;
 let character: Character | undefined;
 
-const client = new Client({ id: '1126475686035587102' });
+const client = new Client({ clientId: '1126475686035587102' });
 
-const activity: Activity = {
-    timestamps: {
-        start: new Date().getTime(),
-    },
-    assets: {
-        large_image: 'logo',
-    },
+const activity: SetActivity = {
+    startTimestamp: new Date(),
+    largeImageKey: 'logo',
 };
 
 const log = new PathOfExileLog({
@@ -74,7 +71,7 @@ console.log('Waiting...');
 log.addListener('login', async (_) => {
     if (!connected) {
         try {
-            await client.connect();
+            client.login();
             const res = await fetch(apiUrl, {
                 headers: {
                     'User-Agent': userAgent,
@@ -93,14 +90,14 @@ log.addListener('login', async (_) => {
                 });
                 character = data.find((c) => c.name == name);
                 if (character) {
-                    activity.assets!.large_text = `Character: ${character.name}`;
-                    activity.assets!.small_image = character.class.toLowerCase();
-                    activity.assets!.small_text = `Level ${character.level} ${character.class}`;
+                    activity.largeImageText = `Character: ${character.name}`;
+                    activity.smallImageKey = character.class.toLowerCase();
+                    activity.smallImageText = `Level ${character.level} ${character.class}`;
                 }
             } else {
                 console.error(res.statusText);
             }
-            client.setActivity(activity);
+            client.user!.setActivity(activity);
             console.log('Connected.');
             connected = true;
         } catch (err) {
@@ -108,47 +105,47 @@ log.addListener('login', async (_) => {
         }
     } else {
         delete activity.details;
-        client.setActivity(activity);
+        client.user!.setActivity(activity);
     }
 });
 
 log.addListener('areaEntered', (evt) => {
     activity.details = `Area: ${evt.newArea}`;
-    client.setActivity(activity);
+    client.user!.setActivity(activity);
 });
 
 log.addListener('level', (evt) => {
     if (character?.name != evt.character) return;
-    activity.assets!.small_text = activity.assets!.small_text
+    activity.smallImageText = activity.smallImageText
         ?.replace(/\d+/, evt.characterLevel.toString());
-    client.setActivity(activity);
+    client.user!.setActivity(activity);
 });
 
 log.addListener('afk', (evt) => {
     activity.state = evt.autoreply || 'AFK mode is ON.';
-    client.setActivity(activity);
+    client.user!.setActivity(activity);
 });
 
 log.addListener('dnd', (evt) => {
     activity.state = evt.autoreply || 'DND mode is ON.';
-    client.setActivity(activity);
+    client.user!.setActivity(activity);
 });
 
 log.addListener('afkEnd', (_) => {
     delete activity.state;
-    client.setActivity(activity);
+    client.user!.setActivity(activity);
 });
 
 log.addListener('dndEnd', (_) => {
     delete activity.state;
-    client.setActivity(activity);
+    client.user!.setActivity(activity);
 });
 
 Deno.addSignalListener('SIGINT', () => {
     console.log('\rQuitting.');
     try {
         log.removeAllListeners();
-        if (connected) client.close();
+        if (connected) client.destroy();
     } catch (err) {
         console.error(err);
     } finally {

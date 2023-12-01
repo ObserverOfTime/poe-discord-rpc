@@ -1,12 +1,12 @@
 {
     "tasks": {
-        "run": "deno run --unstable --allow-read --allow-write --allow-env --allow-ffi --allow-sys=uid --allow-net=www.pathofexile.com main.ts",
-        "build": "deno compile --unstable --lock --allow-read --allow-write --allow-env --allow-ffi --allow-sys=uid --allow-net=www.pathofexile.com main.ts"
+        "run": "deno run --allow-read --allow-write --allow-env --allow-sys=uid --allow-net=www.pathofexile.com,discord.com main.ts",
+        "build": "deno compile --lock --allow-read --allow-write --allow-env --allow-sys=uid --allow-net=www.pathofexile.com,discord.com --target=$TARGET -o poe-discord-rpc-$SUFFIX main.ts"
     },
     "imports": {
-        "path": "https://deno.land/std@0.193.0/path/mod.ts",
-        "discord_rpc": "https://deno.land/x/discord_rpc@0.3.2/mod.ts",
-        "prompt": "https://deno.land/x/cliffy@v1.0.0-rc.2/prompt/mod.ts",
+        "path": "https://deno.land/std@0.208.0/path/mod.ts",
+        "discord_rpc": "https://deno.land/x/discord_rpc_deno@v1.1.1/mod.ts",
+        "prompt": "https://deno.land/x/cliffy@v1.0.0-rc.3/prompt/mod.ts",
         "poe-log-events": "npm:poe-log-events@4.0.0"
     },
     "fmt": {
