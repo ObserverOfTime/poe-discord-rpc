@@ -1,36 +1,31 @@
 {
-  "version": "3",
-  "packages": {
-    "specifiers": {
-      "npm:poe-log-events@4.0.0": "npm:poe-log-events@4.0.0"
+  "version": "5",
+  "specifiers": {
+    "npm:poe-log-events@4.0.0": "4.0.0"
+  },
+  "npm": {
+    "debug@4.3.4": {
+      "integrity": "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==",
+      "dependencies": [
+        "ms"
+      ]
     },
-    "npm": {
-      "debug@4.3.4": {
-        "integrity": "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==",
-        "dependencies": {
-          "ms": "ms@2.1.2"
-        }
-      },
-      "ms@2.1.2": {
-        "integrity": "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==",
-        "dependencies": {}
-      },
-      "poe-log-events@4.0.0": {
-        "integrity": "sha512-MxdBFWy23SEoAdSmmSWU5o+k7v2NyPlCVLw5KpVDjFcMw7FagTRj337KlQVQOyp30e0NNZit06dhtAxaJoeoRg==",
-        "dependencies": {
-          "debug": "debug@4.3.4",
-          "tail": "tail@2.2.6",
-          "tiny-typed-emitter": "tiny-typed-emitter@2.1.0"
-        }
-      },
-      "tail@2.2.6": {
-        "integrity": "sha512-IQ6G4wK/t8VBauYiGPLx+d3fA5XjSVagjWV5SIYzvEvglbQjwEcukeYI68JOPpdydjxhZ9sIgzRlSmwSpphHyw==",
-        "dependencies": {}
-      },
-      "tiny-typed-emitter@2.1.0": {
-        "integrity": "sha512-qVtvMxeXbVej0cQWKqVSSAHmKZEHAvxdF8HEUBFWts8h+xEo5m/lEiPakuyZ3BnCBjOD8i24kzNOiOLLgsSxhA==",
-        "dependencies": {}
-      }
+    "ms@2.1.2": {
+      "integrity": "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="
+    },
+    "poe-log-events@4.0.0": {
+      "integrity": "sha512-MxdBFWy23SEoAdSmmSWU5o+k7v2NyPlCVLw5KpVDjFcMw7FagTRj337KlQVQOyp30e0NNZit06dhtAxaJoeoRg==",
+      "dependencies": [
+        "debug",
+        "tail",
+        "tiny-typed-emitter"
+      ]
+    },
+    "tail@2.2.6": {
+      "integrity": "sha512-IQ6G4wK/t8VBauYiGPLx+d3fA5XjSVagjWV5SIYzvEvglbQjwEcukeYI68JOPpdydjxhZ9sIgzRlSmwSpphHyw=="
+    },
+    "tiny-typed-emitter@2.1.0": {
+      "integrity": "sha512-qVtvMxeXbVej0cQWKqVSSAHmKZEHAvxdF8HEUBFWts8h+xEo5m/lEiPakuyZ3BnCBjOD8i24kzNOiOLLgsSxhA=="
     }
   },
   "remote": {
@@ -254,5 +249,10 @@
     "https://deno.land/x/discord_rpc_deno@v1.1.1/src/transport/WebSocket.ts": "f2c064bc1c30c6694b6f15e4985d94c6263483010cc84001b06527aabb2444b7",
     "https://deno.land/x/discord_rpc_deno@v1.1.1/src/utils/RPCError.ts": "9cbe6163142c490e34109449a63c9a28f4602d7ad9ac614edd3fcd66642f2a45",
     "https://deno.land/x/discord_rpc_deno@v1.1.1/src/utils/TypedEventEmitter.ts": "4a7cbeffcccbeaf68703b9b4ee234935f5e2950c714183df9bd1c0bb1c4d14f5"
+  },
+  "workspace": {
+    "dependencies": [
+      "npm:poe-log-events@4.0.0"
+    ]
   }
 }
